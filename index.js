@@ -21,6 +21,8 @@ regexp.newline = "\\n"
 regexp.return = "\\r"
 regexp.eol = "(?:(?:\\n)|(?:\\r\\n))"
 
+regexp.pattern = require('./lib/pattern')
+
 regexp.naming = {}
 
 regexp.escape = function (source){
@@ -81,6 +83,13 @@ regexp.prototype.somethingBut = function(val){
 
 regexp.prototype.find = function(val){
     return this.add( "(", val, ")" )
+}
+
+regexp.prototype.pattern = function(name) {
+    if (name != undefined && regexp.patterns[name] != undefined) {
+        this.add(regexp.patterns[name])
+    }
+    return this
 }
 
 /**

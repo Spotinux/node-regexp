@@ -19,4 +19,15 @@ equal(re.test("https://www.qq.com"), true) // => true
 equal(re.test("http://www.qqcom"), false) // => false
 equal(re.test("https://www.qq.net"), false) // => false
 
+var re = regexp()
+    .add(regexp.pattern.zipCode)
+    .ignoreCase()
+    .toString()
+
+console.log(re);
+
+console.log(
+    "95350".match(re)
+);
+
 console.log('Done.')
