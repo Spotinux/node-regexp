@@ -1,8 +1,9 @@
-var assert = require('assert')
-var regexp = require('../')
-var equal = assert.equal
+var assert = require('assert');
+var regexp = require('../');
+var equal = assert.equal;
 
-console.log('Start...')
+console.log('Start...');
+
 var re = regexp()
   .start('http')
   .maybe('s')
@@ -11,23 +12,20 @@ var re = regexp()
   .somethingBut(regexp.space)
   .end('.com')
   .ignoreCase()
-  .toRegExp()
+  .toRegExp();
 
-equal(re.test("http://qq.com"), true) // => true
-equal(re.test("http://www.qq.com"), true) // => true
-equal(re.test("https://www.qq.com"), true) // => true
-equal(re.test("http://www.qqcom"), false) // => false
-equal(re.test("https://www.qq.net"), false) // => false
+equal(re.test("http://qq.com"), true); // => true
+equal(re.test("http://www.qq.com"), true); // => true
+equal(re.test("https://www.qq.com"), true); // => true
+equal(re.test("http://www.qqcom"), false); // => false
+equal(re.test("https://www.qq.net"), false); // => false
+
 
 var re = regexp()
     .add(regexp.pattern.zipCode)
     .ignoreCase()
-    .toString()
+    .toRegExp();
 
-console.log(re);
-
-console.log(
-    "95350".match(re)
-);
+console.log(re.test('9530'));
 
 console.log('Done.')
